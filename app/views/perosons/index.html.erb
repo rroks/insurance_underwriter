@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Insurance List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Forename</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Telephone Number</th>
+      <th>License Type</th>
+      <th>License Period</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @perosons.each do |peroson| %>
+      <tr class="inbody">
+        <td><%= peroson.title %></td>
+        <td><%= peroson.forename %></td>
+        <td><%= peroson.surname %></td>
+        <td><%= peroson.email %></td>
+        <td><%= peroson.telephone_number %></td>
+        <td><%= peroson.license_type %></td>
+        <td><%= peroson.license_period %></td>
+        <td><%= link_to 'Show', peroson %></td>
+        <td><%= link_to 'Edit', edit_peroson_path(peroson) %></td>
+        <td><%= link_to 'Destroy', peroson, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insurance', new_peroson_path %>

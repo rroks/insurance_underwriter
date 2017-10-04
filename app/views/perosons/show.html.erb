@@ -1,0 +1,97 @@
+<p id="notice"><%= notice %></p>
+<p><%= render plain: @peroson.inspect %></p>
+<p><%= render plain: @peroson.vehicle.inspect %></p>
+<p><%= render plain: @peroson.driver_histories.inspect %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @peroson.title %>
+</p>
+
+<p>
+  <strong>Forename:</strong>
+  <%= @peroson.forename %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @peroson.surname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @peroson.email %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @peroson.date_of_birth %>
+</p>
+
+<p>
+  <strong>Telephone number:</strong>
+  <%= @peroson.telephone_number %>
+</p>
+
+<p>
+  <strong>Street:</strong>
+  <%= @peroson.street %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @peroson.city %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @peroson.county %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @peroson.postcode %>
+</p>
+
+<p>
+  <strong>License type:</strong>
+  <%= @peroson.license_type %>
+</p>
+
+<p>
+  <strong>License period:</strong>
+  <%= @peroson.license_period %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @peroson.occupation %>
+</p>
+
+<p>
+  <strong>Vehicle Registration:</strong>
+  <%= @peroson.vehicle.vehicle_registration %>
+</p>
+
+<p>
+  <strong>Estimated Annual Mileage:</strong>
+  <%= @peroson.vehicle.estimated_annual_mileage %>
+</p>
+
+<p>
+  <strong>Estimated Vehicle Value:</strong>
+  <%= @peroson.vehicle.estimated_vehicle_value %>
+</p>
+
+<p>
+  <strong>Typical Parking Location:</strong>
+  <%= @peroson.vehicle.typical_parking_location %>
+</p>
+
+<p>
+  <strong>Policy Start Date:</strong>
+  <%= @peroson.vehicle.policy_start_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_peroson_path(@peroson) %> |
+<%= link_to 'Back', perosons_path %>

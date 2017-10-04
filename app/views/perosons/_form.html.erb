@@ -1,0 +1,131 @@
+<%= form_for(setup_person(peroson)) do |form| %>
+  <% if peroson.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(peroson.errors.count, "error") %> prohibited this peroson from being saved:</h2>
+
+      <ul>
+      <% peroson.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.select :title, Peroson.titles.keys %>
+  </div>
+
+  <div class="field">
+    <%= form.label :forename %>
+    <%= form.text_field :forename, id: :peroson_forename %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname, id: :peroson_surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :peroson_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %>
+    <%= form.date_select :date_of_birth, id: :peroson_date_of_birth, start_year: 1900, end_year: Date.current.year, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone_number %>
+    <%= form.text_field :telephone_number, id: :peroson_telephone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :street %>
+    <%= form.text_field :street, id: :peroson_street %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city, id: :peroson_city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :county %>
+    <%= form.text_field :county, id: :peroson_county %>
+  </div>
+
+  <div class="field">
+    <%= form.label :postcode %>
+    <%= form.text_field :postcode, id: :peroson_postcode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :license_type %>
+    <%= form.select :license_type, Peroson.license_types.keys, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :license_period %>
+    <%= form.number_field :license_period, id: :peroson_license_period, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :occupation %>
+    <%= form.select :occupation, Peroson.occupations.keys, include_blank: true %>
+  </div>
+Vehicle:
+  <%= form.fields_for :vehicle do |vehicle_form| %>
+    <div class="field">
+      <%= vehicle_form.label :vehicle_registration %>
+      <%= vehicle_form.text_field :vehicle_registration %>
+    </div>
+
+    <div class="field">
+      <%= vehicle_form.label :estimated_annual_mileage %>
+      <%= vehicle_form.number_field :estimated_annual_mileage %>
+    </div>
+
+    <div class="field">
+      <%= vehicle_form.label :estimated_vehicle_value %>
+      <%= vehicle_form.number_field :estimated_vehicle_value %>
+    </div>
+
+    <div class="field">
+      <%= vehicle_form.label :typical_parking_location %>
+      <%= vehicle_form.select :typical_parking_location, Vehicle.typical_parking_locations.keys, include_blank: true %><br />
+    </div>
+
+     <div class="field">
+      <%= vehicle_form.label :policy_start_date %>
+      <%= vehicle_form.date_select :policy_start_date, start_year: Date.current.year, end_year: Date.current.year + 100, include_blank: true %><br />
+    </div>
+  <% end %>
+
+Driver History
+  <%= form.fields_for :driver_histories do |history_form| %>
+    <div class="field">
+      <%= history_form.label :date_of_incident %>
+      <%= history_form.date_select :date_of_incident, start_year: Date.current.year - 3, end_year: Date.current.year, include_blank: true %><br />
+    </div>
+
+    <div class="field">
+      <%= history_form.label :total_value_of_cliam %>
+      <%= history_form.number_field :total_value_of_claim %><br />
+    </div>
+
+    <div class="field">
+      <%= history_form.label :incident_type %>
+      <%= history_form.select :incident_type, DriverHistory.incident_types.keys, include_blank: true %><br />
+    </div>
+
+    <div class="field">
+      <%= history_form.label :description %>
+      <%= history_form.text_area :description %><br />
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
